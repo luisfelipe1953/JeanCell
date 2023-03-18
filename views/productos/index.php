@@ -1,4 +1,4 @@
-<h1>Hola</h1>
+<?php include __DIR__ . '/../templates/header.php';?>
 <?php include __DIR__ . '/../templates/barra.php'  ?>
 
 
@@ -6,7 +6,7 @@
         <h1>Administrador de bienesraices</h1>
 
         <h2>Productos</h2>
-
+        <div class="contenedor-tabla">
         <table class="tabla">
                 <thead>
                         <tr>
@@ -42,3 +42,5 @@
 
 
         </table>
+        </div>
+<main>       

@@ -5,16 +5,15 @@
 <section class="contenedor-color">
     <div class="contenedor contenedor-categorias">
         <div class="categorias-container" id="categorias-container">
-            <div class="flex">
+            <div class="flex categoria-img">
                  <p>Categorias</p>
-                <img src="/build/img/flecha-abajo.svg" alt="flecha hacia abajo">
+                <img src="/build/img/flecha-abajo.png" alt="flecha hacia abajo">
             </div>
             <div class="display">
 
             </div>
         </div>
         <a class="titulo-descuento" href="/descuento">Ofertas</a>
-        <a class="titulo-descuento">Ayuda</a>
 
     </div>
 </section>
@@ -43,5 +42,7 @@
 </section>
 
 <?php include_once __DIR__ . '/listado.php';  ?>
+<?php include __DIR__ . '/../templates/footer.php';
 
+?>
 <script src="build/js/app.js"></script>

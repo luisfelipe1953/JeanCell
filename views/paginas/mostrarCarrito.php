@@ -26,13 +26,13 @@ $total = 0;
                 <td><?php echo $producto['cantidad']; ?></td>
                 <td><?php echo number_format($producto['precio']*$producto['cantidad'],2);  ?></td>
                 <td>
-                    <form action="" method="POST">
+                    <form class="td-button"action="" method="POST">
                         <input type="hidden" name="id" value="<?php echo openssl_encrypt($producto['id'], COD, KEY) ?>">
 
                         <button type="submit"
                         name="carrito"
+                        class="boton-rojo"
                         value="eliminar"
-                        class=""
                         >Eliminar</button>
                     </form>
                 </td>
@@ -75,3 +75,8 @@ $total = 0;
         <p class="alerta exito">no hay ningun producto en el carrito</p>
     <?php }  ?>
 </section>
+<div class="footer-fixed">
+<?php include __DIR__ . '/../templates/footer.php';
+?>
+</div>
+

@@ -41,5 +41,5 @@ $precio_desc = $producto->precio - (($producto->precio * $producto->descuento) /
 </div>
 </div>
 
-
+<?php include __DIR__ . '/../templates/footer.php';?>
 <script src="build/js/app.js"></script>

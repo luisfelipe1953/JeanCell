@@ -45,7 +45,17 @@ class productos extends ActiveRecord
       $productoRemove = false;
       foreach ($_SESSION['carrito'] as $producto) {
         if ($producto['id'] == $id) {
-          echo "<script>alert('el prodcuto ya esta seleccionado..')</script>";
+          echo "<script> document.addEventListener('DOMContentLoaded', function(event) {
+            function alertaSwal() {
+                Swal.fire({
+                    title: '<h1>Error </h1>',
+                    text: 'El producto ya ha sido seleccionado...',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                })
+            }
+            alertaSwal();
+        });</script>";
           $productoRemove = true;
           break;
         }
@@ -88,9 +98,9 @@ class productos extends ActiveRecord
     if (!$this->producto_disponible) {
       self::$alertas['error'][] = "debes añadir cuantos productos hay en la tienda";
     }
-    // if (!$this->categoria) {
-    //   self::$alertas['error'][] = "debes añadir una categoria";
-    // }
+    if (!$this->categoria_id) {
+       self::$alertas['error'][] = "debes añadir una categoria";
+    }
     if (!$this->imagen) {
        self::$alertas['error'][] = "La imagen es obligatoria";
      }

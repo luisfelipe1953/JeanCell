@@ -1,10 +1,10 @@
-<section class="explorar-categorias">
+<section class="listado">
     <div class="contenedor">
         <h2>Productos</h2>
-        <div class="contenedor-ofertas">
+        <div class="contenedor-listado">
             <?php foreach ($productos as $producto) : ?>
                 <?php $precio_desc = $producto->precio - (($producto->precio * $producto->descuento) / 100); ?>
-                <div class="ofertas">
+                <div class="listado-fondo">
                     <a href="/detalles?id=<?php echo openssl_encrypt($producto->id, COD, KEY) ?>">
                         <img src="/imagenes/<?php echo $producto->imagen; ?>" alt="imagen-producto">
                         <div class="informacion">
@@ -35,12 +35,10 @@
                             <input type="number" id="cantidad" name="cantidad" value="1">
                         </div>
                         <div class="botones-compra">
-                            <input id="comprar_ahora" type="button" value="WhatsApp" class="boton">
+                            <a id="comprar_ahora" href="https://web.whatsapp.com/" target="_blank" class="boton"> WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
                             <button name="carrito" type="submit" value="agregar" class="boton-verde">Agregar</button>
                         </div>
                     </form>
-
-
                 </div>
             <?php endforeach; ?>
         </div>

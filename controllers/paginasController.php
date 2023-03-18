@@ -17,7 +17,7 @@ class paginasController
     {   
         
         $productos = productos::all();
-    
+       
         if (isset($_POST['carrito'])) {
             
             switch ($_POST['carrito']) {
@@ -33,16 +33,17 @@ class paginasController
                     if (is_numeric(openssl_decrypt($_POST['precio'], COD, KEY))) {
                         $precio = openssl_decrypt($_POST['precio'], COD, KEY);
                     }
-                    if (is_numeric($_POST['cantidad'])) {
+                    if (is_string($_POST['cantidad'])) {
                         $cantidad = $_POST['cantidad'];
                     }
+                    
                     if(isAuth()){
                         productos::addProductos($id, $nombre, $precio, $cantidad);
                     }
                     break;
             }
         }
-
+        
         $router->render('paginas/index', [
             'productos' => $productos,
 
@@ -147,9 +148,7 @@ class paginasController
                 }
             }
         }
-        $router->render('paginas/pagar', [
-            'total' => $total
-        ]);
+        $router->render('paginas/pagar');
     }
 
     public static function descuento(Router $router){

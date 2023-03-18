@@ -25,8 +25,10 @@ class LoginController
                 if($usuarios){
 
                     if($usuarios->comprobarPasswordAndVerificado($auth->password)){
-                        session_start();
-
+                        if (session_status() == PHP_SESSION_NONE) {
+                            session_start();
+                        }
+                    
                         $_SESSION['id'] = $usuarios->id;
                         $_SESSION['nombre'] = $usuarios->nombre . " " . $usuarios->apellido;
                         $_SESSION['email'] = $usuarios->email;
@@ -35,9 +37,11 @@ class LoginController
                         if($usuarios->admin == "1"){   
                             $_SESSION['admin'] = $usuarios->admin ?? null;
                             header('location: /admin');
+                            exit;
                         }else{
                             $_SESSION['usuario'] = $usuarios->nombre;
                             header('location: /');
+                            exit;
                         }
                     }
                 }else{
@@ -55,8 +59,10 @@ class LoginController
     }
     public static function logout()
     {
-        session_start();
-
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    
         $_SESSION = [];
 
         header('location: /');
